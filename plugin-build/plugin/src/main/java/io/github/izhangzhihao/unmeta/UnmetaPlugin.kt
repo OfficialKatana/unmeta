@@ -11,6 +11,7 @@ class UnmetaPlugin : Plugin<Project> {
         extension = project.extensions.create("unmeta", UnmetaExtension::class.java, project)
         val unmetaTaskTask = project.tasks.create("unmeta", UnmetaTask::class.java)
         unmetaTaskTask.enable.set(extension.enable)
-        project.tasks.getByName("compileKotlin").finalizedBy(unmetaTaskTask)
+        project.tasks.getByName("compileDebugKotlin").finalizedBy(unmetaTaskTask)
+        project.tasks.getByName("compileReleaseKotlin").finalizedBy(unmetaTaskTask)
     }
 }
